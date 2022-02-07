@@ -1,7 +1,8 @@
 import requests
 import json
 
-def loadImgInfo(uid,referer,cookie,sinceid):
+def loadImgInfo(uid,cookie,sinceid):
+    referer='https://weibo.com/'+uid+'?tabtype=album'
     url='https://weibo.com/ajax/profile/getImageWall?uid='+uid+'&sinceid='+sinceid
     headers={
         'accept': 'application/json, text/plain, */*',

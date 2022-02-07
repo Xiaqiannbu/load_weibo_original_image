@@ -11,21 +11,21 @@ def loadUserInfo():
             userName=line.strip()[9:]
         if line.startswith('uid='):
             uid=line.strip()[4:]
-        if line.startswith('referer='):
-            referer=line.strip()[8:]
+        # if line.startswith('referer='):
+        #     referer=line.strip()[8:]
         if line.startswith('cookie='):
             cookie=line.strip()[7:]
         if line.startswith('downloadDirRoot='):
             downloadDirRoot=line.strip()[16:]
-    print('userName:',userName,'\nuid:',uid,'\nreferer:',referer,'\ncookie:',cookie,'\ndownloadDirRoot:',downloadDirRoot)
-    return (userName,uid,referer,cookie,downloadDirRoot)
+    print('userName:',userName,'\nuid:',uid,'\ncookie:',cookie,'\ndownloadDirRoot:',downloadDirRoot)
+    return (userName,uid,cookie,downloadDirRoot)
 
-(userName,uid,referer,cookie,downloadDirRoot)=loadUserInfo()
+(userName,uid,cookie,downloadDirRoot)=loadUserInfo()
 downloadDir=downloadDirRoot+'/'+userName
 if not os.path.isdir(downloadDir):
     os.makedirs(downloadDir)
-pidList, since_id=get_district(loadImgInfo(uid,referer,cookie,'0&has_album=true'))
+pidList, since_id=get_district(loadImgInfo(uid,cookie,'0&has_album=true'))
 while since_id!=0:
-    pidList, since_id = get_district(loadImgInfo(uid,referer,cookie,since_id),pidList)
+    pidList, since_id = get_district(loadImgInfo(uid,cookie,since_id),pidList)
 print('Num:',len(pidList))
 downloadImg(pidList, downloadDir)
