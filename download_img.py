@@ -47,7 +47,16 @@ def loadImg(pid, downloadDir,i):
                     else:
                         has_error = True
                 except Exception:
-                    print('Download', pid, 'fail!')
+                    try:
+                        url = 'https://wx3.sinaimg.cn/large/' + pid + '.jpg'
+                        res = requests.get(url=url)
+                        if res.status_code == 200:
+                            open(downloadDir + '/' + pid + '.jpg', 'wb').write(res.content)  # 将内容写入图片
+                            print('Picture:', pid, 'has been download!')
+                        else:
+                            has_error = True
+                    except Exception:
+                        print('Download', pid, 'fail!')
     # if res.status_code==200:
     #     open(downloadDir+'/'+pid+'.jpg', 'wb').write(res.content)  # 将内容写入图片
     #     print('Picture:',pid,'has been download!')
