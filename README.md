@@ -1,6 +1,5 @@
 # 批量下载微博高清原图的代码
 ### 本代码用Python写的，需要电脑预装Python。
-### 需要被爬取的微博账号开放了相册一栏。
 ## 使用方法：
 ### 1.先修改userinfo，用记事本打开，修改userName、uid、cookie、downloadDirRoot。
 #### 注：userName只是为了保存在指定文件夹下，downloadDirRoot为指定根目录，取什么名字与下载无关。
