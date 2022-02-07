@@ -6,7 +6,7 @@
 #### 注：userName只是为了保存在指定文件夹下，downloadDirRoot为指定根目录，取什么名字与下载无关。
 ### 2.进入你要爬取的微博账号，按F12，点击进入相册一栏，点击右侧Network下的Name栏的getImageWall一栏，获取uid、referer、cookie。
 ### 3.修改好userinfo文件后，在 爬取微博图片.py 文件的同目录下，空白处按住shift并右击，输入python 爬取微博图片.py（可复制后右击可以粘贴），回车运行即可。
-### [!获取uid、referer、cookie](img/爬取微博图片.png)
+### ![获取uid、referer、cookie](img/爬取微博图片.png)
 
 ## 与其它软件的比较：
 ### 有的软件是相当于用游客身份访问，这样有个弊端，有的微博账号某些内容只对粉丝开放，这样用游客身份访问就无法下载。所以想访问这些内容还是需要用你的账号通过cookie访问。
