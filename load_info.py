@@ -51,3 +51,32 @@ def get_district(text, pidList=[]):
         print(len(pidList),':',pid)
     since_id=dict["data"]['since_id']
     return pidList,since_id
+
+def load_userName(uid, cookie):
+    url = 'https://weibo.com/ajax/profile/info?uid=' + uid
+    referer='https://weibo.com/u/'+uid
+    # print(url)
+    headers = {
+        'accept': 'application/json, text/plain, */*',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'zh-CN,zh;q=0.9',
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'cookie': cookie,
+        'referer': referer,
+        'sec-ch-ua': '"\\Not\"A;Brand";v="99", "Chromium";v="84", "Google Chrome";v="84"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-origin',
+        'traceparent': '00-1c139e096020309ee08515b68b212990-a3301d11f8d55b85-00',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.30 Safari/537.36',
+        'x-requested-with': 'XMLHttpRequest',
+        'x-xsrf-token': 'ay1cbLKwIOjHA2k1UZFupGJ_'
+    }
+    res = requests.get(url=url, headers=headers)
+    # print(res)
+    res.encoding = 'utf-8'
+    # print('Response:\n',res.text)
+    dict=json.loads(res.text)
+    name=dict['data']['user']['screen_name']
+    return name
